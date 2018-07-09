@@ -4,6 +4,18 @@ library(rvest)
 
 Leagues <- c("IT1","L1","ES1","GB1","FR1")
 
+Catcher2 <- data.frame(
+  Player=character(),
+  MarketValue=character(),
+  Age=character(),
+  Contract=character(),
+  CurrentTeam=character(),
+  Position=character(),
+  Nationality=character(),
+  Foot=character(),
+  Height=character()
+)
+
 for (league in Leagues) {
 
   print(league)
@@ -27,19 +39,7 @@ for (league in Leagues) {
   Catcher1 <- data.frame(Catcher1[odd_indexes,])
   
   Catcher1$P_URL <- paste0("http://www.transfermarkt.com",Catcher1$P_URL)
-  
-  Catcher2 <- data.frame(
-    Player=character(),
-    MarketValue=character(),
-    Age=character(),
-    Contract=character(),
-    CurrentTeam=character(),
-    Position=character(),
-    Nationality=character(),
-    Foot=character(),
-    Height=character()
-    )
-  
+
   for (i in Catcher1$P_URL) {
     
     WS2 <- read_html(i)
